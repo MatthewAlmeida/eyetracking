@@ -32,6 +32,9 @@
 from typing import Dict
 
 from kedro.pipeline import Pipeline
+from .pipelines import (
+    get_pipeline_convert_excel_to_csv
+)
 
 def create_pipelines(**kwargs) -> Dict[str, Pipeline]:
     """Create the project's pipeline.
@@ -44,4 +47,6 @@ def create_pipelines(**kwargs) -> Dict[str, Pipeline]:
 
     """
 
-    return {"__default__": Pipeline([])}
+    convert_pipeline = get_pipeline_convert_excel_to_csv()
+
+    return {"__default__": convert_pipeline}
